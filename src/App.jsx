@@ -15,24 +15,12 @@ import CategoryPage from './components/CategoryPage';
 import SearchPage from './components/SearchPage';
 import ProductDetail from './components/ProductDetail';
 import TikTokEmulator from './components/TikTokEmulator';
-import Preloader from './components/Preloader';
 import { supabase } from './lib/supabaseClient';
 import './index.css';
 
 function App() {
   const path = window.location.pathname;
   const [emulator, setEmulator] = React.useState({ isOpen: false, link: '' });
-  const [loading, setLoading] = React.useState(true);
-  const [fadeOut, setFadeOut] = React.useState(false);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-      setTimeout(() => setLoading(false), 800);
-    }, 2200);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   React.useEffect(() => {
     // Global listener for the Virtual Phone Emulator
@@ -61,9 +49,7 @@ function App() {
   // Public Routes
 
   return (
-    <>
-      {loading && <Preloader fadeOut={fadeOut} />}
-      <div className="app">
+    <div className="app">
       <Header />
       <main>
         {(path === '/' || path === '') && (
@@ -89,7 +75,6 @@ function App() {
         tiktokLink={emulator.link} 
       />
     </div>
-    </>
   );
 }
 
