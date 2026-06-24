@@ -1,0 +1,228 @@
+.header {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .desktop-nav {
+    display: block;
+  }
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-main);
+  opacity: 0.8;
+  padding: 0.5rem 0;
+  text-transform: capitalize;
+}
+
+.nav-links a:hover, .nav-links li.active a {
+  opacity: 1;
+  color: var(--gold-dark);
+}
+
+.nav-links li.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--gold-dark);
+  border-radius: 2px;
+}
+
+.header-search {
+  display: none;
+  align-items: center;
+  background-color: var(--gold-light);
+  border-radius: 30px;
+  padding: 6px 15px;
+  width: 180px;
+  transition: var(--transition);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+@media (min-width: 600px) {
+  .header-search {
+    display: flex;
+  }
+}
+
+.header-search:focus-within {
+  border-color: var(--gold);
+  width: 220px;
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  width: 100%;
+  color: var(--text-main);
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-btn {
+  background: transparent;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 8px;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  color: var(--gold-dark);
+  transform: scale(1.1);
+}
+
+.mobile-menu {
+  display: block;
+  cursor: pointer;
+}
+
+@media (min-width: 992px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+.hide-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: block;
+  }
+}
+
+/* Mega Menu Dropdown Styles */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  transform: translateY(15px);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lg);
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  gap: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 100;
+  min-width: 550px;
+  border: 1px solid var(--glass-border);
+  border-top: 4px solid var(--gold);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+}
+
+.dropdown-column h4 {
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  color: var(--gold-dark);
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--gold-light);
+  padding-bottom: 8px;
+}
+
+.dropdown-column a {
+  padding: 8px 0 !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  text-transform: capitalize !important;
+  opacity: 0.7 !important;
+  transition: var(--transition);
+}
+
+.dropdown-column a:hover {
+  opacity: 1 !important;
+  color: var(--gold-dark) !important;
+  transform: translateX(5px);
+}
+
+/* Narrow Dropdown for simpler menus */
+.dropdown-menu.dropdown-narrow {
+  min-width: 220px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dropdown-menu.dropdown-narrow .dropdown-column {
+  min-width: unset;
+}
+
+

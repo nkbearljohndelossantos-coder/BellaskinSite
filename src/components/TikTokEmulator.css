@@ -1,0 +1,569 @@
+.emulator-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.emulator-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 40px;
+}
+
+.emulator-close {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.emulator-close:hover {
+  background: #fe2c55;
+  transform: rotate(90deg) scale(1.1);
+  border-color: transparent;
+}
+
+/* Frame Switcher */
+.frame-switcher {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  padding: 10px 20px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 10000;
+}
+
+.frame-switcher button {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frame-switcher button.active {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+}
+
+/* Android Frame */
+.android-frame {
+  width: 380px;
+  height: 780px;
+  background: #000;
+  border-radius: 45px;
+  padding: 12px;
+  box-shadow: 0 0 0 4px #222, 0 30px 60px rgba(0,0,0,0.8);
+  position: relative;
+  border: 2px solid #333;
+}
+
+.android-screen {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 35px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.android-camera {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: #111;
+  border-radius: 50%;
+  z-index: 100;
+  border: 2px solid #222;
+}
+
+/* iPhone Frame */
+.iphone-frame {
+  width: 380px;
+  height: 780px;
+  background: #000;
+  border-radius: 55px;
+  padding: 12px;
+  box-shadow: 0 0 0 4px #1a1a1a, 0 30px 60px rgba(0,0,0,0.8);
+  position: relative;
+  border: 2px solid #222;
+}
+
+.iphone-screen {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 45px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.dynamic-island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 30px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 100;
+}
+
+/* Status Bars */
+.android-status-bar, .iphone-status-bar {
+  padding: 12px 25px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+}
+
+.status-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Browser Headers */
+.android-browser-header, .iphone-browser-header {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.address-area {
+  flex: 1;
+  background: #f1f3f4;
+  border-radius: 20px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #5f6368;
+}
+
+.iphone-browser-header .address-area {
+  background: rgba(0,0,0,0.05);
+  border-radius: 12px;
+  justify-content: center;
+}
+
+/* Loading Bar */
+.android-progress-container {
+  height: 3px;
+  width: 100%;
+  background: rgba(0,0,0,0.05);
+}
+
+.android-progress-fill {
+  height: 100%;
+  transition: width 0.3s ease, opacity 0.5s;
+}
+
+/* Native Shop View Styles (The Premium Fallback) */
+.native-shop-container {
+  height: 100%;
+  background: #fff;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.native-shop-container::-webkit-scrollbar {
+  display: none;
+}
+
+.native-shop-header {
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.shop-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.shop-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #fe2c55;
+  padding: 2px;
+}
+
+.shop-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.shop-meta h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.shop-meta p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.shop-follow-btn {
+  margin-left: auto;
+  background: #fe2c55;
+  color: #fff;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.shop-tabs {
+  display: flex;
+  gap: 20px;
+}
+
+.shop-tab {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  padding-bottom: 8px;
+  position: relative;
+}
+
+.shop-tab.active {
+  color: #000;
+}
+
+.shop-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #000;
+}
+
+.native-product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  background: #f9f9f9;
+}
+
+.native-product-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hot-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #fe2c55;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.product-details {
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details h3 {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  height: 2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.price-row {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: 700;
+  color: #fe2c55;
+  font-size: 0.95rem;
+}
+
+.buy-btn {
+  background: rgba(254, 44, 85, 0.1);
+  color: #fe2c55;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.buy-btn:hover {
+  background: #fe2c55;
+  color: #fff;
+}
+
+/* Popup / Pump Styles */
+.tiktok-popup-pump {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  width: 250px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.popup-icon {
+  color: #fe2c55;
+  animation: pulse-red 1.5s infinite;
+}
+
+.tiktok-popup-pump p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Navigation Bars */
+.android-nav-bar {
+  padding: 15px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+}
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.nav-icon.triangle {
+  width: 0; height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 0;
+  border-right: 14px solid #ccc;
+}
+
+.nav-icon.circle { border-radius: 50%; }
+.nav-icon.square { border-radius: 2px; }
+
+.iphone-nav-bar {
+  padding: 20px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.home-indicator {
+  width: 120px;
+  height: 5px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Sidebar Messages */
+.emulator-sidebar-msg {
+  width: 300px;
+}
+
+.glossy-card {
+  padding: 30px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 30px;
+  color: #fff;
+}
+
+.glossy-card h4 {
+  margin: 15px 0 10px;
+  color: #fff;
+}
+
+.glossy-card p {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+.tech-specs {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #fe2c55;
+}
+
+.tech-specs p {
+  margin: 4px 0;
+}
+
+.fallback-trigger {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 100;
+}
+
+.cloud-status-indicator {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  z-index: 100;
+}
+
+.live-pill {
+  background: #fe2c55;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-spin {
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1000px) {
+  .emulator-sidebar-msg { display: none; }
+}
